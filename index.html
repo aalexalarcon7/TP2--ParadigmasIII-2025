@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luxury Car's – Concesionaria Premium Online</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div id="splash" aria-hidden="true">
+  <div class="splash-inner">
+    <img src="logo-luxurycars.svg" alt="Luxury Car's logo" class="splash-logo">
+    <div class="glow"></div>
+  </div>
+</div>
+
+<body>
+<header class="navbar">
+  <div class="container wrap">
+
+    <a class="brand" href="index.html">
+      <img src="logo-luxurycars.svg" alt="Logo Luxury Car's">
+    </a>
+
+    <!-- boton burguer -->
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav" aria-label="Abrir menú">☰</button>
+
+    <!-- menu -->
+    <nav id="mainnav" class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="listado_tabla.html">Especificaciónes</a>
+      <a href="listado_box.html">Modelos</a>
+      <a href="comprar.html">Comprar</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="--hero-image:url('img/hero.jpg')">
+  <div class="inner container">
+    <h1>Elegancia y Performance</h1>
+    <p>Explorá una selección curada de vehículos de alta gama.</p>
+    <a class="btn" href="listado_box.html">Ver catálogo</a>
+    <a class="btn secondary" href="listado_tabla.html">Lista completa</a>
+  </div>
+</section>
+
+<main class="container section">
+  <h2>Destacados</h2>
+  <p class="lead">Ediciones que definen una colección.</p>
+
+  <!-- grid vacio se rellena aleatoriamente por JS-->
+  <div id="destacados" class="grid" style="margin-top:18px"></div>
+</main>
+
+<footer class="footer">
+  <div class="container wrap">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="logo-luxurycars.svg" alt="Logo" style="height:24px">
+      <strong></strong>
+    </div>
+    <small>© 2025. Proyecto académico.</small>
+  </div>
+</footer>
+
+<!-- splash -->
+<script>
+  const splash = document.getElementById('splash');
+  const inner  = document.querySelector('.splash-inner');
+  function hideSplash(){ splash.classList.add('hidden'); }
+  inner?.addEventListener('animationend', (e) => {
+    if (e.animationName === 'splash-enter') setTimeout(hideSplash, 350);
+  });
+  setTimeout(hideSplash, 3000);
+</script>
+
+<!-- aleatorios -->
+<script>
+(function(){
+  const AUTOS = [
+    { marca:'Aston Martin',   modelo:'Vantage 2023',        precio:220000, img:'img/vantage.jpg' },
+    { marca:'Aston Martin',   modelo:'DB11 2022',           precio:260000, img:'img/db11.jpg' },
+    { marca:'Bentley',        modelo:'Continental GT 2023', precio:280000, img:'img/continental.jpg' },
+    { marca:'Bentley',        modelo:'Bentayga 2022',       precio:300000, img:'img/bentayga.jpg' },
+    { marca:'Aston Martin',   modelo:'DBX 707 2023',        precio:330000, img:'img/dbx707.jpg' },
+    { marca:'Bentley',        modelo:'Flying Spur 2023',    precio:310000, img:'img/flyingspur.jpg' },
+    { marca:'Ferrari',        modelo:'Roma 2024',           precio:270000, img:'img/roma.jpg' },
+    { marca:'Porsche',        modelo:'911 Turbo S 2024',    precio:240000, img:'img/911turbo.jpg' },
+    { marca:'Rolls-Royce',    modelo:'Cullinan 2024',       precio:355000, img:'img/cullinan.jpg' },
+    { marca:'Ferrari',        modelo:'SF90 Stradale 2024',  precio:490000, img:'img/sf90.jpg' },
+    { marca:'Lamborghini',    modelo:'Aventador 2022',      precio:400000, img:'img/aventador.jpg' },
+    { marca:'Mercedes-Benz',  modelo:'AMG G 63 2024',       precio:180000, img:'img/gwagon.jpg' },
+    { marca:'Lamborghini',    modelo:'Urus 2024',           precio:260000, img:'img/urus.jpg' }
+  ];
+
+  const money = v => new Intl.NumberFormat('es-AR',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(v);
+  const el = document.getElementById('destacados'); if (!el) return;
+
+  //elige 6 al azar sin repetir
+  const N = 7, pool = AUTOS.slice(), picks = [];
+  while (picks.length < Math.min(N, pool.length)) {
+    picks.push(pool.splice(Math.floor(Math.random()*pool.length), 1)[0]);
+  }
+
+  el.innerHTML = picks.map(a => `
+    <article class="card">
+      <img class="media" src="${a.img}" alt="${a.marca} ${a.modelo}" loading="lazy"
+           onerror="this.src='https://images.unsplash.com/photo-1549923746-c502d488b3ea?q=80&auto=format&fit=crop&w=1200'">
+      <div class="body">
+        <span class="tag">${a.marca}</span>
+        <h3 class="title">${a.modelo}</h3>
+        <p class="price">${money(a.precio)}</p>
+      </div>
+    </article>
+  `).join('');
+})();
+</script>
+
+<script src="app.js"></script>
+
+</body>
+</html>
+
