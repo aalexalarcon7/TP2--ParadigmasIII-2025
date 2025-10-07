@@ -15,7 +15,7 @@ const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
     if (t === 'volver arriba' || t === '...') a.remove();
   });
 
-  // Estado / helpers
+  // estado / helpers
   const isMobile = () => window.matchMedia('(max-width: 880px)').matches;
   const setOpen  = open => {
     nav.classList.toggle('is-open', open);
@@ -231,7 +231,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Por si alguna página aún trae el trigger viejo
+  // por si alguna página tiene el trigger viejo
   document.querySelectorAll('.mobile-menu').forEach(el => el.remove());
 })();
+
 
