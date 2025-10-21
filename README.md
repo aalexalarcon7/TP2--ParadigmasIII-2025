@@ -142,3 +142,27 @@ El proyecto “Luxury Car’s” tiene una versión más sólida y profesional.
  LINK PAGINA: https://luxurycarsx.netlify.app/
  LINK GIT: https://github.com/aalexalarcon7/TP2--ParadigmasIII-2025
 
+Informe de implementación del plugin 21/10
+Se eligió este plugin porque permite validar formularios de manera flexible, mostrando mensajes de error personalizados sin alterar el diseño ni el flujo del sitio. Es uno de los plugins jQuery más usados para validación y facil de integrarlo al proyecto.
+
+1. Desactivación de validación nativa:
+En el archivo comprar.html se agregó el atributo novalidate al formulario para evitar los mensajes predeterminados del navegador y permitir que el plugin maneje la validación.
+"<form id="purchase-form" novalidate>"
+Integración del plugin:
+
+2. Integración del plugin:
+- Se creó un nuevo archivo public-js-validation-safe.js.
+- En este archivo se importan automáticamente jQuery y jQuery Validation desde CDN (solo si no están presentes).
+- Se configuraron las reglas de validación para los campos: nombre, dirección, teléfono, email, método de pago y producto (auto seleccionado).
+- Se mostraron mensajes personalizados en español debajo de cada campo.
+- Se agregó un borde rojo (outline) en los campos inválidos.
+
+3. Incorporación en el proyecto:
+En el comprar.html, al final del <body>, se añadió la referencia al script:
+"<script src="public/js/validation-safe.js"></script>"
+
+4. Pruebas realizadas:
+- Se probaron casos con campos vacíos, teléfono con letras y correos sin “@”.
+- El formulario muestra mensajes de error debajo de cada campo y no permite continuar hasta que todos sean válidos.
+- Cuando todos los datos son correctos, el flujo original del sitio (mensaje de “Compra realizada con éxito”) se ejecuta normalmente.
+
