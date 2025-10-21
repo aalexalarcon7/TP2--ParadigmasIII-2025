@@ -148,7 +148,6 @@ Informe de implementación del plugin 21/10
 1. Desactivación de validación nativa:
 En el archivo comprar.html se agregó el atributo novalidate al formulario para evitar los mensajes predeterminados del navegador y permitir que el plugin maneje la validación.
 "<form id="purchase-form" novalidate>"
-Integración del plugin:
 
 2. Integración del plugin:
 - Se creó un nuevo archivo public-js-validation-safe.js.
