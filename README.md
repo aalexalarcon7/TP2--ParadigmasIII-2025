@@ -143,7 +143,7 @@ El proyecto “Luxury Car’s” tiene una versión más sólida y profesional.
  LINK GIT: https://github.com/aalexalarcon7/TP2--ParadigmasIII-2025
 
 Informe de implementación del plugin 21/10
-Se eligió este plugin porque permite validar formularios de manera flexible, mostrando mensajes de error personalizados sin alterar el diseño ni el flujo del sitio. Es uno de los plugins jQuery más usados para validación y facil de integrarlo al proyecto.
+- Elegí este plugin porque permite validar formularios de manera flexible, mostrando mensajes de error personalizados sin alterar el diseño ni el flujo del sitio. Es uno de los plugins jQuery más usados para validación y facil de integrarlo al proyecto.
 
 1. Desactivación de validación nativa:
 En el archivo comprar.html se agregó el atributo novalidate al formulario para evitar los mensajes predeterminados del navegador y permitir que el plugin maneje la validación.
